@@ -31,11 +31,15 @@ toggleButton.addEventListener('click',()=> {
 });
 
 whiteBoard.addEventListener('touchstart', (e)=> {
+    if(e.touches.length != 1)
+        return;
     const startPoint = pagePointToCanvasPoint([e.touches[0].clientX, e.touches[0].clientY]);
     startDrawing(startPoint);
 });
 
 whiteBoard.addEventListener('touchmove', (e)=> {
+    if(e.touches.length != 1)
+        return;
     const currentPoint = pagePointToCanvasPoint([e.touches[0].clientX, e.touches[0].clientY]);
     continueDrawing(currentPoint);
 });
