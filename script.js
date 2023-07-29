@@ -7,9 +7,9 @@ const whiteBoard = document.getElementById('white-board');
 const whiteBoardCtx = whiteBoard.getContext('2d');
 whiteBoard.width = whiteBoard.height = whiteBoardSize;
 
-function clientPointToCanvasPoint(clientPoint){
-    const windowSize =  Math.min(window.innerHeight,window.innerWidth);
-    return clientPoint.map(v=>v*whiteBoardSize/windowSize);
+function pagePointToCanvasPoint(pagePoint){
+    const rect = whiteBoard.getBoundingClientRect();
+    return [pagePoint[0]-rect.x, pagePoint[1]-rect.y];
 }
 function startDrawing(startPoint) {
     whiteBoardCtx.strokeStyle = isBlack?'black':'white';
@@ -31,24 +31,24 @@ toggleButton.addEventListener('click',()=> {
 });
 
 whiteBoard.addEventListener('touchstart', (e)=> {
-    const startPoint = clientPointToCanvasPoint([e.touches[0].clientX, e.touches[0].clientY]);
+    const startPoint = pagePointToCanvasPoint([e.touches[0].clientX, e.touches[0].clientY]);
     startDrawing(startPoint);
 });
 
 whiteBoard.addEventListener('touchmove', (e)=> {
-    const currentPoint = clientPointToCanvasPoint([e.touches[0].clientX, e.touches[0].clientY]);
+    const currentPoint = pagePointToCanvasPoint([e.touches[0].clientX, e.touches[0].clientY]);
     continueDrawing(currentPoint);
 });
 
 whiteBoard.addEventListener('mousedown', (e)=> {
     isMouseDrawing = true;
-    const startPoint = clientPointToCanvasPoint([e.clientX, e.clientY]);
+    const startPoint = pagePointToCanvasPoint([e.clientX, e.clientY]);
     startDrawing(startPoint);
 });
 
-whiteBoard.addEventListener('mousemove', (e)=> {
+addEventListener('mousemove', (e)=> {
     if(isMouseDrawing) {
-        const currentPoint = clientPointToCanvasPoint([e.clientX, e.clientY]);
+        const currentPoint = pagePointToCanvasPoint([e.clientX, e.clientY]);
         continueDrawing(currentPoint);
     }
 });
