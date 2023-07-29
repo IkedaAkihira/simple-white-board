@@ -1,0 +1,42 @@
+#white-board {
+    touch-action: none;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    width: auto;
+    border: 1px solid #888;
+}
+
+#bottom-tab {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    margin: 5px;
+    left: 0px;
+    bottom: 0px;
+    gap: 5px;
+}
+
+.blackened {
+    background-color: black;
+    color: white;
+}
+
+.whitened {
+    background-color: white;
+    color: black;
+}
+
+#toggle-button {
+    border: 1px solid #888;
+}
+
+
+@media (orientation: portrait) {
+    #white-board {
+        height: auto;
+        width: 100vw;
+    }
+}
+
