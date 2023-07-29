@@ -1,5 +1,5 @@
 #white-board {
-    touch-action: pinch-zoom;
+    touch-action: none;
     border: 1px solid #888;
 }
 
@@ -14,16 +14,13 @@
     background-color: #88888888;
 }
 
-.blackened {
-    background-color: black;
-    color: white;
-}
-
-.whitened {
+.button {
+    border: 1px solid #888;
     background-color: white;
     color: black;
 }
 
-#toggle-button {
-    border: 1px solid #888;
+.blackened {
+    background-color: black;
+    color: white;
 }

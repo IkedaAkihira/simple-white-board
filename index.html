@@ -9,7 +9,9 @@
 <body>
     <canvas id="white-board"></canvas>
     <div id="bottom-tab">
-        <button class="blackened" id="toggle-button">切り替える</button>
+        <button id="pen" class="select-button blackened" data-mode="0">Pen</button>
+        <button id="eraser" class="select-button" data-mode="1">Eraser</button>
+        <button id="move" class="select-button" data-mode="2">Move</button>
         <input type="range" id="pen-width" min="1" max="100" value="10">
     </div>
         <script src="script.js"></script>
